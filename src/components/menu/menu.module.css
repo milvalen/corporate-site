@@ -1,0 +1,19 @@
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.875rem;
+    cursor: pointer;
+    width: 174px;
+    height: 44px;
+    color: black;
+}
+
+.menu:hover {
+    color: #FF5900;
+    text-decoration: underline;
+}
+
+.selected {
+    color: #FF5900;
+}

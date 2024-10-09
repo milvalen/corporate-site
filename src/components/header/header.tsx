@@ -1,36 +1,18 @@
 'use client';
-import Link from 'next/link';
+import Menu from '../menu/menu';
 import styles from './header.module.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export default function Header() {
     const [scrolled, setScrolled] = useState(false);
-
-    useEffect(() => {
-      const handleScroll = () => {
-        const offset = window.scrollY;
-        if (offset > 50) {
-          setScrolled(true);
-        } else {
-          setScrolled(false);
-        }
-      };
-  
-      window.addEventListener('scroll', handleScroll);
-      
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-      };
-    }, []);
+    window.addEventListener('scroll', () => setScrolled(window.scrollY > 50));
 
     return (
         <header className={scrolled ? `${styles.header} ${styles.scrolled}` : styles.header}>
-            <div className={styles.logo}>
-                LOGO
-            </div>
-            <div className={styles.links}>
-                <Link href='/pros'>Преимущества</Link>
-                <Link href='/work'>Как работаем</Link>
+            <div className={styles.logo}>LOGO</div>
+            <div className={styles.menu}>
+                <Menu to='#pros'>Преимущества</Menu>
+                <Menu to='#work'>Как работаем</Menu>
             </div>
         </header>
     );
